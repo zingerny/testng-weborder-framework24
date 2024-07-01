@@ -9,6 +9,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utility.ConfigReader;
+import utility.Driver;
 
 import java.time.Duration;
 
@@ -16,13 +18,12 @@ public class AllProductsTests extends TestBase {
 
     @Test
     public void verifyTitle() {
-        driver.get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
-        String username = "Tester";
-        String passcode = "test";
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys(username, Keys.TAB, passcode,Keys.ENTER);
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-        driver.findElement(By.linkText("View all products")).click();
-        WebElement element = driver.findElement(By.tagName("h2"));
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys(ConfigReader.getProperty("username"), Keys.TAB,ConfigReader.getProperty("password"),Keys.ENTER);
+
+        Driver.getDriver().findElement(By.linkText("View all products")).click();
+        WebElement element = Driver.getDriver().findElement(By.tagName("h2"));
         Assert.assertTrue(element.isDisplayed());
     }
 

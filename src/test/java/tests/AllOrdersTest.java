@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utility.Driver;
 
 import java.time.Duration;
 
@@ -18,32 +19,33 @@ public class AllOrdersTest extends TestBase{
 
     @Test
     public void verifyDeleteSelectedButton() {
-        driver.get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
+        Driver.getDriver().get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
+
         String username = "Tester";
         String passcode = "test";
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys(username, Keys.TAB, passcode,Keys.ENTER);
-        WebElement element = driver.findElement(By.name("ctl00$MainContent$btnDelete"));
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys(username, Keys.TAB, passcode,Keys.ENTER);
+        WebElement element = Driver.getDriver().findElement(By.name("ctl00$MainContent$btnDelete"));
         Assert.assertTrue(element.isDisplayed());
     }
 
     @Test
     public void verifyCheckAllButton() {
-        driver.get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
+        Driver.getDriver().get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
         String username = "Tester";
         String passcode = "test";
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys(username, Keys.TAB, passcode,Keys.ENTER);
-        WebElement element = driver.findElement(By.id("ctl00_MainContent_btnCheckAll"));
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys(username, Keys.TAB, passcode,Keys.ENTER);
+        WebElement element = Driver.getDriver().findElement(By.id("ctl00_MainContent_btnCheckAll"));
         Assert.assertTrue(element.isDisplayed());
 
     }
 
     @Test
     public void verifyUncheckAllButton() {
-        driver.get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
+        Driver.getDriver().get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
         String username = "Tester";
         String passcode = "test";
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys(username, Keys.TAB, passcode,Keys.ENTER);
-        WebElement element = driver.findElement(By.id("ctl00_MainContent_btnUncheckAll"));
+        Driver.getDriver().findElement(By.id("ctl00_MainContent_username")).sendKeys(username, Keys.TAB, passcode,Keys.ENTER);
+        WebElement element = Driver.getDriver().findElement(By.id("ctl00_MainContent_btnUncheckAll"));
         Assert.assertTrue(element.isDisplayed());
     }
 
