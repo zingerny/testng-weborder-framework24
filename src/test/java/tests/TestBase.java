@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import utility.Driver;
+import utility.SeleniumUtils;
 
 import java.time.Duration;
 
@@ -24,6 +25,7 @@ public class TestBase {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown(){
+        SeleniumUtils.takeScreenshot("target/sceenshots/failure.png");
         Driver.quitDriver();
     }
 }

@@ -2,8 +2,10 @@ package utility;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
 
@@ -14,8 +16,8 @@ public class Driver {
     public static WebDriver getDriver(){
         if(driver == null){
             //read the browser from config file
-            String browser = ConfigReader.getProperty("browser");
-            switch(browser){
+            String browserType = ConfigReader.getProperty("browser").toLowerCase();
+            switch(browserType){
                 case "chrome":
                     driver = new ChromeDriver();
                     break;
@@ -25,8 +27,14 @@ public class Driver {
                 case "firefox":
                     driver = new FirefoxDriver();
                     break;
+                case "chrome-headless":
+                    driver = new ChromeDriver(new ChromeOptions().addArguments("--headless").addArguments("window-size=1920x1080"));
+                    break;
+                case "firefox-headless":
+                    driver = new FirefoxDriver(new FirefoxOptions().addArguments("--headless"));
+                    break;
                 default:
-                    throw new IllegalArgumentException(browser + " ->This Browser is not supported or invalid");
+                    throw new IllegalArgumentException(browserType + " ->This Browser is not supported or invalid");
             }
 
         }

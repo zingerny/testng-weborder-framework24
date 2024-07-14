@@ -1,0 +1,47 @@
+TDD(Test Driven Development) Framework - TestNG or JUnit based framework that uses @Test annotations to create tests
+
+Steps of creating TestNG based framework from scratch:
+1. Create a maven project
+2. Add project specific dependencies
+3. Add .gitignore
+4. Create the package structure
+5. Add TestBase and necessary test classes (don't forget to extend your test classes from TestBase)
+6. Add testng.xml file to configure different test runs
+7. Add .properties file with project specific global properties like urls, username, passwords ,etc.
+   (never hardcode properties like urls, passwords, api keys into the code, rather use properties file)
+8. Add the utility class to read from the property file (ConfigReader)
+9. Add the Driver utility class that is implemented using Singleton design pattern
+10. Add Selenium Utility class for re-usable selenium methods and add more methods as needed as you progress in your progress
+11. Start creating the Page classes for each page of the application and add the WebElements and related methods
+11. Create test cases using the Page classes and their methods according to Page Object Model design pattern
+12. Add a support for running tests through CMD by configuring the Maven Surefire plugin in pom.xml
+
+
+13. Add Extent report dependency and configure Test Base class for the report generation
+14. Configure the Driver class to add headless browser options for each browser
+15. Add a support for Cross-Browser testing
+16. Add a support for Parallel Testing
+
+
+
+
+Singleton Design Pattern -> A design pattern where an instantiation of a class is restricted to only one object.
+                           An example could be the Driver class where the Webdriver instantiation is done by getDriver() method that checks if the WebDriver obj is already initialized.
+                           The purpose of using this pattern is to prevent multiple WebDriver objects being initialized.
+                      4 steps:
+                      1.make a public class: Public class Cat
+                      2.make a private static Variable:  private static Cat cat;
+                      3.private constructor: private Cate(){}
+                      4. Make a getMethod() that checks with If statement initialization. if it wasn't then you can initialise:
+                                                                    Public class Cat{
+                                                                    private static Cat cat;
+                                                                    private static cat(){
+                                                                    public static Cat getInstance(){
+                                                                    if(cat == null){
+                                                                    cat = new Cat();
+                                                                    }
+                                                                    return cat;
+                                                                    }
+
+
+
