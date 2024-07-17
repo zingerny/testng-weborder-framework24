@@ -11,12 +11,20 @@ import java.time.Duration;
 
 public class Driver {
 
+
+
     private static WebDriver driver;
 
     public static WebDriver getDriver(){
         if(driver == null){
             //read the browser from config file
-            String browserType = ConfigReader.getProperty("browser").toLowerCase();
+
+            String browserType =  System.getProperty("browser"); // pass thru command line your browser
+         if(browserType == null){ // checks if the browser was set thru command line, if not then reads from config file.
+             browserType = ConfigReader.getProperty("browser").toLowerCase();
+         }
+
+
             switch(browserType){
                 case "chrome":
                     driver = new ChromeDriver();
@@ -28,6 +36,7 @@ public class Driver {
                     driver = new FirefoxDriver();
                     break;
                 case "chrome-headless":
+
                     driver = new ChromeDriver(new ChromeOptions().addArguments("--headless").addArguments("window-size=1920x1080"));
                     break;
                 case "firefox-headless":

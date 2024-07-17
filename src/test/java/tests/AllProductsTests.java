@@ -39,6 +39,7 @@ public class AllProductsTests extends TestBase {
         Driver.getDriver().get(FrameworkConstants.HOMEPAGE_URL);
         new LoginPage().login();
         new HomePage().clickOnLink("View all products");
+        SeleniumUtils.waitFor(2);
         List <String> actualHeadersText = new AllProductsPage().extractHeadersText();
         Assert.assertEquals(actualHeadersText, List.of("Product name", "Price", "Discount"));
 

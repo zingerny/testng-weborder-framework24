@@ -46,6 +46,6 @@ public void negativeLoginNoPassword() {
 
     Driver.getDriver().get(ConfigReader.getProperty("url"));
     new LoginPage().login(ConfigReader.getProperty("username"), "");
-        Assert.assertNotEquals(Driver.getDriver().getCurrentUrl(),"http://secure.smartbearsoftware.com/samples/testcomplete12/weborders/");
+    Assert.assertNotEquals(Driver.getDriver().getCurrentUrl(),"http://secure.smartbearsoftware.com/samples/testcomplete12/weborders/");
     }
 }
