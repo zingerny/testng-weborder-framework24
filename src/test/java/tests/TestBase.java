@@ -71,6 +71,8 @@ extentReports.flush();
         }
         else if (testResult.getStatus() == ITestResult.FAILURE){
         logger.fail("Test FAILED" +testResult.getName());
+            logger.fail(testResult.getThrowable());
+            //take screenshot
         String pathOfTheScreenShotFile = SeleniumUtils.getScreenshot("target/sceenshots/failure.png");
         logger.addScreenCaptureFromPath(pathOfTheScreenShotFile);
         }
